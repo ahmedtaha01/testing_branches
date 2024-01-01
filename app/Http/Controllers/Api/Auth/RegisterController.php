@@ -26,4 +26,6 @@ class RegisterController extends Controller
 
         return $this->success('user logged in successfully',new UserResource($user),200);
     }
+
+    //comment from secondappinsidefirstbranch.
 }
