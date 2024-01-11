@@ -28,3 +28,7 @@ Route::post('register',[RegisterController::class,'register']);
 
 
 Route::apiResource('posts',PostController::class)->middleware('auth:sanctum');
+
+Route::get('/welcome',function (){
+    return "orders branch";
+});
