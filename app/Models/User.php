@@ -52,15 +52,15 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function getCreatedAtAttribute($value){
+    // public function getCreatedAtAttribute($value){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
+    //     return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
         
-    }
+    // }
 
-    public function getUpdatedAtAttribute($value){
+    // public function getUpdatedAtAttribute($value){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
+    //     return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
         
-    }
+    // }
 }

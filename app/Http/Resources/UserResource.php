@@ -16,14 +16,14 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         // return parent::toArray($request);
-        $routeDontShowPost = $request->routeIs('api/register');
+        // $routeDontShowPost = $request->routeIs('api/register');
         return [
             // 'id'            => $this->id,
             'name'          => $this->name,
             'email'         => $this->email,
-            $this->mergeWhen($routeDontShowPost, [
-                'posts'         => PostResource::collection(Post::where('user_id',$this->id)->get())
-            ]),
+            // $this->mergeWhen($routeDontShowPost, [
+            //     'posts'         => PostResource::collection(Post::where('user_id',$this->id)->get())
+            // ]),
             'token'         => $this->token,
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,

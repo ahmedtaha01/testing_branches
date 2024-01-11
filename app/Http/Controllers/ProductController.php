@@ -14,13 +14,17 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware('is_admin')->except(['index','show']);
+        // $this->middleware('is_admin')->except(['index','show']);
     } 
     public function index()
     {
-        $products = Product::all();
+        if(request()->ajax()){
+            $products = Product::all();
+            $html = view('products.table',compact('products'))->render();
+            return response()->json(['html' => $html]);
+        }
 
-        return view('products.index',compact('products'));
+        return view('products.index');
     }
 
     /**
@@ -68,8 +72,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($ids)
     {
-        //
+        return 'success';
+    }
+
+    public function destroyAll(Request $request)
+    {
+        Product::whereIn('id', $request->ids)->get()->each->delete();
+        return 'deleted success';
     }
 }
